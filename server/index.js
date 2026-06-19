@@ -20,12 +20,13 @@ app.get("/", (req, res) => {
 });
 app.use(
   cors({
-    origin: [process.env.ORIGIN],
+    origin: ["http://54.144.222.197",
+      "http://54.144.222.197:3000"],
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })
 );
-
+app.options("*", cors());
 app.use(cookieParser());
 app.use(express.json());
 

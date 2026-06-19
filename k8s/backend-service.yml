@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-service
+  namespace: chat-app
+spec:
+  selector:
+    app: backend-app
+  ports:
+    - port: 3001
+      targetPort: 3001
+  type: ClusterIP

@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: mongodb-state
+  namespace: chat-app
+
+spec:
+  serviceName: mongodb-svc
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: mongodb-app
+
+  template:
+    metadata:
+      labels:
+        app: mongodb-app
+
+    spec:
+      containers:
+        - name: mongodb-cont
+          image: mongo:7
+
+          ports:
+            - containerPort: 27017
+
+          volumeMounts:
+            - name: mongo-pvc
+              mountPath: /data/db
+
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-pvc
+
+      spec:
+        accessModes:
+          - ReadWriteOnce
+
+        storageClassName: ""
+
+        resources:
+          requests:
+            storage: 1Gi

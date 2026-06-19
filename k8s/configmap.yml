@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend-config
+  namespace: chat-app
+
+data:
+  PORT: "3001"
+  JWT_KEY: "my-key123"
+  ORIGIN: "http://54.144.222.197:80"
+  DATABASE_URL: "mongodb://mongodb-svc:27017/chat-app-db"
+  PEPPER_STRING: "my_key123"

@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: chat-app
+  labels:
+    app: frontend-app
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: frontend-app
+
+  template:
+    metadata:
+      labels:
+        app: frontend-app
+
+    spec:
+      containers:
+        - name: frontend-cont
+          image: manthan010/chat-app-front-end
+          imagePullPolicy: Always
+
+          ports:
+            - containerPort: 80

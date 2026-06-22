@@ -5,11 +5,22 @@ import Group from "./models/GroupModel.js";
 const setupSocket = (server) => {
   console.log("Socket.io server started");
 
+<<<<<<< HEAD
   const corsOptions = require("./config/cors");
 
 const io = new Server(server, {
   cors: corsOptions,
 });
+=======
+  const io = new SocketIOServer(server, {
+    cors: {
+      origin: [        process.env.ORIGIN,              // primary frontend
+        "http://127.0.0.1"],
+      methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+      credentials: true,
+    },
+  });
+>>>>>>> 5b70ebf (added)
 
   const userSocketMap = new Map();
 

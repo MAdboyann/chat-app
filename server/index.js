@@ -18,7 +18,17 @@ const databaseURL = process.env.DATABASE_URL;
 app.get("/", (req, res) => {
   res.send("Server is running 🚀");
 });
+<<<<<<< HEAD
 app.use(cors(corsOptions));
+=======
+app.use(
+  cors({
+    origin: ["http://127.0.0.1",
+      "http://54.144.222.197:3000"],
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+    credentials: true,
+  })
+>>>>>>> 5b70ebf (added)
 );
 app.options("*", cors());
 app.use(cookieParser());
